@@ -1,0 +1,24 @@
+{
+  "name": "vaxthuset_backend",
+  "version": "1.0.0",
+  "description": "backend for växthuset app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Erik Liljeroth",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "pg": "^7.18.2",
+    "pg-connection-string": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
