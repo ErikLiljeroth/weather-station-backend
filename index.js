@@ -17,6 +17,26 @@ app.get('/api/data', (request, response) => {
     })
 })
 
+app.get('/info', (request, response) => {
+    const sql = `SELECT * FROM ${config.DB_TABLE} ORDER BY dtg ASC`
+    db.query(sql, (error, result) => {
+        if (error) throw error
+
+        const first_day = result[0].dtg.split(' ')[0]
+        const last_day = result[result.length - 1].dtg.split(' ')[0]
+        const noSamples = result.length
+
+        const info = [{
+            total_measurements: noSamples,
+            first_day_of_measurements: first_day,
+            last_day_of_measurements: last_day
+        }]
+
+        response.json(info)
+    })
+})
+
+
 app.listen(config.PORT, () => {
     logger.info(`Server running on port ${config.PORT}`)
 })
