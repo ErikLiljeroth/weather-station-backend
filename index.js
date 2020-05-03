@@ -10,7 +10,7 @@ app.use(cors())
 app.use(express.json())
 
 app.get('/api/data', (request, response) => {
-    const sql = `SELECT dtg, temperature, humidity FROM ${config.DB_TABLE} ORDER BY dtg ASC LIMIT 1446`
+    const sql = `SELECT * FROM (SELECT dtg, temperature, humidity FROM ${config.DB_TABLE} ORDER BY dtg DESC LIMIT 1446) ORDER BY dtg ASC`
     db.query(sql, (error, result) => {
         if (error) throw error
         response.json(result)
