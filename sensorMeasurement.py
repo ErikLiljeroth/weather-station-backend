@@ -40,11 +40,11 @@ def insertDB(temp, humi, s_id):
             db=DB_DATABASE
         )
         cursor = con.cursor()
-		
+
         sql = f'INSERT INTO {DB_INSERT_TABLE} (dtg, temperature, humidity, sensor_id) VALUES (%(dtg)s, %(temp)s, %(humi)s, %(s_id)s)'
 
-		now = datetime.now()
-        formatted_now = now.strftime('%Y-%m-%d %H:%M:00')
+	now = datetime.now()
+	formatted_now = now.strftime('%Y-%m-%d %H:%M:00')
 
         dataToInsert = {
 			'dtg' : formatted_now,
