@@ -43,14 +43,14 @@ def insertDB(temp, humi, s_id):
 
         sql = f'INSERT INTO {DB_INSERT_TABLE} (dtg, temperature, humidity, sensor_id) VALUES (%(dtg)s, %(temp)s, %(humi)s, %(s_id)s)'
 
-	now = datetime.now()
-	formatted_now = now.strftime('%Y-%m-%d %H:%M:00')
+        now = datetime.now()
+        formatted_now = now.strftime('%Y-%m-%d %H:%M:00')
 
         dataToInsert = {
-			'dtg' : formatted_now,
-            'temp' : temp,
-            'humi' : humi,
-            's_id' : s_id
+            'dtg': formatted_now,
+            'temp': temp,
+            'humi': humi,
+            's_id': s_id
         }
 
         cursor.execute(sql, dataToInsert)
@@ -79,7 +79,7 @@ def main():
 
     # Get the sensor-id to use in the database
     id1 = s.electronic_id_1()
-	temp = format(s.temperature(), '.2f')
+    temp = format(s.temperature(), '.2f')
     humi = format(s.humidity(), '.2f')
 
     insertDB(temp, humi, id1)
@@ -90,4 +90,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
