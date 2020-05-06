@@ -17,6 +17,14 @@ app.get('/api/data', (request, response) => {
     })
 })
 
+app.get('api/alldata', (request, response) => {
+    const sql = `SELECT * FROM ${config.DB_TABLE} ORDER BY dtg ASC`
+    db.query(sql, (error, result) => {
+        if (error) throw error
+        response.json(result)
+    })
+})
+
 app.get('/info', (request, response) => {
     const sql = `SELECT * FROM ${config.DB_TABLE} ORDER BY dtg ASC`
     db.query(sql, (error, result) => {
