@@ -2,7 +2,7 @@
 
 This repository contains the back-end code for Erik's greenhouse app. The frontend is served as static files by Node.js. 
 
-> Front-end repo at [link](todo)
+> Front-end repo at [link](https://gitlab.com/ErikLiljeroth/greenhouse_frontend)
 
 ## Project description
 
