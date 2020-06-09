@@ -1,0 +1,3 @@
+2020-06-08 21:16:41,963 ERROR __main__ Failed processing format-parameters; Python 'float64' cannot be converted to a MySQL type
+2020-06-08 21:59:00,199 ERROR __main__ 1142 (42000): UPDATE command denied to user 'pi_insert'@'localhost' for table 'temppred2020'
+2020-06-08 22:20:31,815 ERROR __main__ 1142 (42000): UPDATE command denied to user 'pi_insert'@'localhost' for table 'temppred2020'

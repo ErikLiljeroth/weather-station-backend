@@ -160,7 +160,7 @@ class HandlePredictions():
         ar = [1, 8, 48]
         ma = [48]
         self.model = SARIMAX(endog=train_data, order=(ar, 1, ma), seasonal_order=(0, 1, 0, 48), simple_differencing=True)
-        self.model = self.model.fit(disp=True, low_memory=True, maxiter=8) #start_params = [0.3, -0.04, 0.1, -0.9, 0.6])
+        self.model = self.model.fit(disp=True, low_memory=True) #start_params = [0.3, -0.04, 0.1, -0.9, 0.6])
 
     def predict(self, horizon = 12):
         forecast = self.model.get_forecast(steps=12)
