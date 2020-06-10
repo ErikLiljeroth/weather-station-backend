@@ -25,6 +25,32 @@ app.get('/api/alldata', (request, response) => {
     })
 })
 
+app.get('/api/tempforecast', (request, response) =>{
+    const sql = `SELECT * FROM (SELECT * FROM ${config.DB_FORECAST_TEMP_TABLE} ORDER BY dtg DESC LIMIT 12) AS output ORDER BY dtg ASC`
+    db.query(sql, (error, result) => {
+        if (error) throw error
+        // remove properties that have value null
+        for (let key in result) {
+            let obj = result[key]
+            for (let attr in obj) {
+                if (obj[attr] === null) {
+                    delete(obj[attr])
+                }
+            }
+        }
+        response.json(result)
+    })
+})
+
+app.get('/api/temppred1', (request, reponse) =>{
+    const sql = `SELECT dtg, step1 FROM ${config.DB_FORECAST_TEMP_TABLE} ORDER BY dtg ASC`
+    db.query(sql, (error, result) => {
+        if (error) throw error
+        let step1 = result.filter(tuple => tuple.step1 !== null)
+        reponse.json(step1)
+    })
+})
+
 app.get('/info', (request, response) => {
     const sql = `SELECT * FROM ${config.DB_TABLE} ORDER BY dtg ASC`
     db.query(sql, (error, result) => {
