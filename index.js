@@ -29,14 +29,16 @@ app.get('/api/tempforecast', (request, response) =>{
     const sql = `SELECT * FROM (SELECT * FROM ${config.DB_FORECAST_TEMP_TABLE} ORDER BY dtg DESC LIMIT 12) AS output ORDER BY dtg ASC`
     db.query(sql, (error, result) => {
         if (error) throw error
-        // remove properties that have value null
+        // keep only properties with the most recent prediction for each time stamp
+        let index = 1
         for (let key in result) {
             let obj = result[key]
-            for (let attr in obj) {
-                if (obj[attr] === null) {
-                    delete(obj[attr])
+            for (const prop in obj) {
+                if ((prop != `step${index}`) && (prop != 'dtg')) {
+                    delete(obj[prop])
                 }
             }
+            index++
         }
         response.json(result)
     })
