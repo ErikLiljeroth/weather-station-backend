@@ -1,4 +1,4 @@
-# Greenhouse-backend
+# Weather station backend
 
 This repository contains the back-end code for Erik's weather station app. The frontend is served as static files in folder "build" by Node.js.
 
